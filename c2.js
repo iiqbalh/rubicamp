@@ -17,3 +17,4 @@ function deretKaskus(n) {
 }
 console.log(deretKaskus(10));
 
+

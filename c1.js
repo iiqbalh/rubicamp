@@ -3,10 +3,10 @@ function sum() {
     for (const num of arguments) {
       sum += num
     }
-    return sum
+    console.log(sum)
   }
   
-  console.log(sum(1, 2, 7));
-  console.log(sum(1, 4));
-  console.log(sum(11));
-  console.log(sum(10, 3, 6, 7, 9));
+  sum(1, 2, 7);
+  sum(1, 4);
+  sum(11);
+  sum(10, 3, 6, 7, 9);
