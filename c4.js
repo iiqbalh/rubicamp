@@ -1,7 +1,7 @@
 function indexPrime(param1) {
   const arrs = [];
 
-  for (let j = 2; j <= 1000000; j++) {
+  for (let j = 2; j < Infinity; j++) {
     let count = 0;
     for (let i = 1; i <= j; i++) {
       if (j % i == 0)
