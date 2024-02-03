@@ -1,4 +1,4 @@
-function toRoman(num) {
+function Roman(num) {
     const romanNumerals = [
         { value: 1000, numeral: 'M' },
         { value: 900, numeral: 'CM' },
@@ -28,8 +28,8 @@ function toRoman(num) {
 console.log("Script Testing untuk Konversi Romawi\n")
 console.log("input | expected | result")
 console.log("------|----------|-------")
-console.log("4     | IV       | ", toRoman(4));
-console.log("9     | IX       | ", toRoman(9));
-console.log("13    | XIII     | ", toRoman(13));
-console.log("1453  | MCDLIII  | ", toRoman(1453));
-console.log("1646  | MDCXLVI  | ", toRoman(1646));
+console.log("4     | IV       | ", Roman(4));
+console.log("9     | IX       | ", Roman(9));
+console.log("13    | XIII     | ", Roman(13));
+console.log("1453  | MCDLIII  | ", Roman(1453));
+console.log("1646  | MDCXLVI  | ", Roman(1646));
