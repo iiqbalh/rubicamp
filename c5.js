@@ -1,13 +1,14 @@
 function stringManipulation(word) {
-    arrs = []
+    let arrs = [];
+    lower = word.toLowerCase();
 
-    if (word[0] == 'a' || word[0] == 'i' || word[0] == 'u' || word[0] == 'e' || word[0] == 'o') {
-        arrs = word;
+    if (lower[0] == 'a' || lower[0] == 'i' || lower[0] == 'u' || lower[0] == 'e' || lower[0] == 'o') {
+        arrs = lower;
     } else {
-        arrs = word.slice(1) + word[0] + 'nyo'
+        arrs = lower.slice(1) + lower[0] + 'nyo';
     }
     console.log(arrs)
 }
 
-stringManipulation('ayam')
-stringManipulation('bebek')
+stringManipulation('AYAM')
+stringManipulation('BEBEK')
