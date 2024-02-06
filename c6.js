@@ -1,15 +1,17 @@
 function sentencesManipulation(sentence) {
     arr2 = [];
-    arr = sentence.toLowerCase().split(" ");
+    arr = sentence.split(" ")
 
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i].at(0) == 'a' || arr[i].at(0) == 'i' || arr[i].at(0) == 'u' || arr[i].at(0) == 'e' || arr[i].at(0) == 'o') {
+        if (arr[i][0] == 'a' || arr[i][0] == 'i' || arr[i][0] == 'u' || arr[i][0] == 'e' || arr[i][0] == 'o') {
+            arr2.push(arr[i])
+        } else if (arr[i][0] == 'A' || arr[i][0] == 'I' || arr[i][0] == 'U' || arr[i][0] == 'E' || arr[i][0] == 'O') {
             arr2.push(arr[i])
         } else {
-            arr2.push(arr[i].slice(1) + arr[i].at(0) + 'nyo')
+            arr2.push(arr[i].slice(1) + arr[i][0] + 'nyo')
         }
     }
     console.log(arr2.join(" "))
 }
 
-sentencesManipulation('ibu pergi ke pasar bersama aku')
+sentencesManipulation('Itik MAKAN dengan Orang Utan di sawah')
