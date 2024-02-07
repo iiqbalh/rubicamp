@@ -1,4 +1,4 @@
-function weirdMultiply(sentence) {
+const weirdMultiply = sentence => {
     str = sentence.toString()
     count = 1
 
