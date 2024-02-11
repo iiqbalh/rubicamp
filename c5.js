@@ -1,4 +1,5 @@
-function stringManipulation(word) {
+const stringManipulation = word => {
+    
     let arrs = '';
     lower = word.toLowerCase();
 
@@ -7,8 +8,9 @@ function stringManipulation(word) {
     } else {
         arrs = lower.slice(1) + lower[0] + 'nyo';
     }
-    console.log(arrs)
+
+    console.log(arrs);
 }
 
-stringManipulation('AYAM')
-stringManipulation('BEBEK')
+stringManipulation('AYAM');
+stringManipulation('BEBEK');

@@ -1,6 +1,7 @@
 const weirdMultiply = sentence => {
-    str = sentence.toString()
-    count = 1
+    
+    str = sentence.toString();
+    count = 1;
 
     for (let i = 0; i < str.length; i++) {
         count *= str[i];
@@ -11,8 +12,9 @@ const weirdMultiply = sentence => {
     } else {
         return weirdMultiply(count);
     }
+
 }
 
-console.log(weirdMultiply(39))
-console.log(weirdMultiply(999))
-console.log(weirdMultiply(3))
+console.log(weirdMultiply(39));
+console.log(weirdMultiply(999));
+console.log(weirdMultiply(3));

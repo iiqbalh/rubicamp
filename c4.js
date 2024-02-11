@@ -1,15 +1,16 @@
-function indexPrime(param1) {
+const indexPrime = param1 => {
+
   const arrs = [];
 
   for (let j = 2; j < Infinity; j++) {
     let count = 0;
     for (let i = 1; i <= j; i++) {
       if (j % i == 0)
-        count++
+        count++;
     }
 
     if (count == 2) {
-      arrs.push(j)
+      arrs.push(j);
     }
 
     count = 0;
@@ -19,7 +20,7 @@ function indexPrime(param1) {
     }
   }
 
-  return arrs[param1 - 1]
+  return arrs.length - 1;
 }
 
 console.log(indexPrime(4));
