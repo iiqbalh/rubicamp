@@ -21,4 +21,4 @@ readline.question('tulis kalimatmu di sini > ', sentence => {
     console.log('hasil konversi: ', arr2.join(" "));
 
     readline.close();
-});
+})
