@@ -16,13 +16,13 @@ Pertanyaan: ${data[counter].definition}
 Tebakan: `, (txt) => {
 
 //jika jawaban benar
-    if (txt === data[0].term) { 
+    if (txt === data[counter].term) { 
         console.log('Selamat Anda Benar!');
         counter++;
 
-        rl.question(`\nPertanyaan: ${data[1].definition}
+        rl.question(`\nPertanyaan: ${data[counter].definition}
 Tebakan: `, (txt) => {
-            if (txt === data[1].term) {
+            if (txt === data[counter].term) {
                 console.log('Selamat Anda Benar!');
                 rl.close();
             } else {
@@ -30,7 +30,7 @@ Tebakan: `, (txt) => {
 //-------------------------------------------------------------------
 
                 rl.question(`\nTebakan: `, (txt) => { //menebak ulang pertanyaan kedua
-                    if (txt === data[1].term) {
+                    if (txt === data[counter].term) {
                         console.log('Selamat Anda Benar!');
                         rl.close();
                     } else {
@@ -55,7 +55,7 @@ Tebakan: `, (txt) => {
 
                 rl.question(`\nPertanyaan: ${data[1].definition}
 Tebakan: `, (txt) => {                                          //lanjut ke pertanyaan kedua
-                    if (txt === data[1].term) {
+                    if (txt === data[counter].term) {
                         console.log('Selamat Anda Benar!');
                         rl.close();
                     } else {
@@ -63,7 +63,7 @@ Tebakan: `, (txt) => {                                          //lanjut ke pert
 //---------------------------------------------------------------------
 
                         rl.question(`\nTebakan: `, (txt) => {
-                            if (txt === data[1].term) {
+                            if (txt === data[counter].term) {
                                 console.log('Selamat Anda Benar!');
                                 rl.close();
                             } else {
