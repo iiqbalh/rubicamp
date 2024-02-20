@@ -28,8 +28,6 @@ rl.on('line', (line) => {
         console.log(`Pertanyaan: ${data[counter].definition}`)
     }
 
-    console.log(counter)
-
     rl.prompt()
 
 }).on('close', () => {
