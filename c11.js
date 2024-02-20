@@ -3,89 +3,38 @@ const hasil = readFileSync('./data.json', 'utf-8');
 const data = JSON.parse(hasil);
 
 
+console.log(`Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya!\n`)
+
 const rl = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
+    prompt: 'Tebakan: '
 });
 
 
 let counter = 0;
 
-rl.question(`Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya!\n
-Pertanyaan: ${data[counter].definition}
-Tebakan: `, (txt) => {
+console.log(`Pertanyaan: ${data[counter].definition}`);
 
-//jika jawaban benar
-    if (txt === data[counter].term) { 
-        console.log('Selamat Anda Benar!');
+rl.prompt()
+
+rl.on('line', (line) => {
+    if (line !== data[counter].term) {
+        console.log(`wkwkwk, Anda kurang beruntung!\n`);
+    } else {
+        console.log(`Selamat anda benar!\n`);
         counter++;
-
-        rl.question(`\nPertanyaan: ${data[counter].definition}
-Tebakan: `, (txt) => {
-            if (txt === data[counter].term) {
-                console.log('Selamat Anda Benar!');
-                rl.close();
-            } else {
-                console.log('Wkwkwk, Anda kurang beruntung!');
-//-------------------------------------------------------------------
-
-                rl.question(`\nTebakan: `, (txt) => { //menebak ulang pertanyaan kedua
-                    if (txt === data[counter].term) {
-                        console.log('Selamat Anda Benar!');
-                        rl.close();
-                    } else {
-                        console.log('Wkwkwk, Anda kurang beruntung!');
-                        rl.close();
-                    }
-                })
-            }
-        });
-
-//---------------------------------------------------------------------
-
-//jika jawaban salah
-    } else { 
-        console.log('Wkwkwk, Anda kurang beruntung!');
-
-        rl.question(`\nTebakan: `, (txt) => { //menebak ulang pertanyaan pertama
-            if (txt === data[counter].term) {
-                console.log('Selamat Anda Benar!');
-                counter++;
-//---------------------------------------------------------------------
-
-                rl.question(`\nPertanyaan: ${data[1].definition}
-Tebakan: `, (txt) => {                                          //lanjut ke pertanyaan kedua
-                    if (txt === data[counter].term) {
-                        console.log('Selamat Anda Benar!');
-                        rl.close();
-                    } else {
-                        console.log('Wkwkwk, Anda kurang beruntung!');
-//---------------------------------------------------------------------
-
-                        rl.question(`\nTebakan: `, (txt) => {
-                            if (txt === data[counter].term) {
-                                console.log('Selamat Anda Benar!');
-                                rl.close();
-                            } else {
-                                console.log('Wkwkwk, Anda kurang beruntung!');
-                                rl.close();
-                            }
-                        })
-                    }
-                });
-
-            } else {
-                console.log('Wkwkwk, Anda kurang beruntung!');
-                rl.close();
-            }
-        });
+        if (counter === data.length) rl.close();
+        console.log(`Pertanyaan: ${data[counter].definition}`)
     }
 
-});
+    console.log(counter)
 
-rl.on('close', () => {
-    console.log(`\nHore Anda Menang!\n`);
-});
+    rl.prompt()
 
+}).on('close', () => {
+    console.log('Hore Anda Menang!');
+    process.exit(0);
+});
 
 
