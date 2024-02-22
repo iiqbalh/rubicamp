@@ -1,11 +1,12 @@
 const pola = str => {
     
-    // const [num, , pengali, , hasil] = arr;
+    arr = str.split(" ")
+    const [num, , pengali, , hasil] = arr;
     result = [];
 
     for (let i = 0; i < str.length; i++) {
         for (let j = 0; j < str.length; j++) {
-            if (str.replace('#', i) * pengali == hasil.replace('#', j)) {
+            if (num.replace('#', i) * pengali == hasil.replace('#', j)) {
                 result.push(i, j);
             }
         }

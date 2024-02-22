@@ -1,9 +1,9 @@
-const readline = require('readline').createInterface({
+const rl = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-readline.question('tulis kalimatmu di sini > ', sentence => {
+rl.question('tulis kalimatmu di sini > ', sentence => {
 
     arr2 = [];
     arr = sentence.split(" ");
@@ -20,5 +20,5 @@ readline.question('tulis kalimatmu di sini > ', sentence => {
 
     console.log('hasil konversi: ', arr2.join(" "));
 
-    readline.close();
+    rl.close();
 })
