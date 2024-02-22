@@ -1,12 +1,6 @@
 const { readFileSync } = require('node:fs');
 const hasil = readFileSync('./data.json', 'utf-8');
 const data = JSON.parse(hasil);
-// const splice = data.splice(1, 1)
-// const push = data.push(splice[0])
-
-
-// console.log(splice)
-// console.log(data)
 const txt = process.argv[2];
 
 if (txt === 'data.json') {
@@ -26,7 +20,7 @@ if (txt === 'data.json') {
     rl.prompt();
 
     rl.on('line', (line) => {
-        if (line == data[counter].term) { //jika benar
+        if (line == data[counter].term) {
             console.log(`\nAnda Beruntung!\n`);
             count = 1;
             counter++;
@@ -34,17 +28,16 @@ if (txt === 'data.json') {
             if (counter === data.length) rl.close();
             console.log(`Pertanyaan: ${data[counter].definition}`);
 
-        } else if (line === 'skip') { //jika yg lainnya benar
-            const splice = data.splice(counter, counter);
-            data.push(splice[0]);
+        } else if (line === 'skip') {
+            data.push(data[counter]);
+            data.splice(counter, count);
 
             console.log(`\nPertanyaan: ${data[counter].definition}`);
             count = 1;
 
-        } else { //jika salah
+        } else {
             console.log(`\nAnda kurang beruntung! anda telah salah ${count++}, silahkan coba lagi.`);
         }
-        console.log(counter)
 
         rl.prompt();
 
