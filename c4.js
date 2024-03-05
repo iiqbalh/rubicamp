@@ -20,7 +20,7 @@ const indexPrime = param1 => {
     }
   }
 
-  return arrs[param1 - 1];
+  return arrs[arrs.length - 1];
 }
 
 console.log(indexPrime(4));
