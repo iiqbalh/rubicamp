@@ -1,4 +1,6 @@
-if (process.argv[2] === 'todo.js') {
+const txt = process.argv[2];
+
+if (!txt) {
     console.log(`
 >>> JS TODO <<<
 $ node todo.js <command>
@@ -13,4 +15,5 @@ $ node todo.js list:completed ascldesc
 $ node todo.js tag <task_id> <tag_name_1> <tag_name_2> ... <tag_name_N>
 $ node todo.js filter: <tag_name>
 `)
+process.exit();
 }
