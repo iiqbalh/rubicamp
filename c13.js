@@ -92,9 +92,7 @@ switch (txt) {
     case "tag":
         const txt7 = process.argv[3] - 1;
         const txt8 = process.argv.splice(4, 10);
-        txt8.forEach(items => {
-            data[txt7].tags.push(items)
-        })
+        txt8.forEach(items => data[txt7].tags.push(items))
         writing(data)
         console.log(`Tag '${txt8}' telah ditambahkan ke daftar '${data[txt7].title}'`)
         break;
