@@ -1,1 +1,34 @@
-[]
+[
+    {
+        "title": "aku mau tidur",
+        "complete": true,
+        "tags": [
+            "bantal",
+            "guling"
+        ]
+    },
+    {
+        "title": "aku mau makan",
+        "complete": false,
+        "tags": [
+            "lauk"
+        ]
+    },
+    {
+        "title": "aku mau jajan",
+        "complete": true,
+        "tags": [
+            "seblak"
+        ]
+    },
+    {
+        "title": "saya mau mandi",
+        "complete": false,
+        "tags": [
+            "sabun",
+            "mandi",
+            "sikat",
+            "gigi"
+        ]
+    }
+]

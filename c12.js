@@ -36,7 +36,7 @@ if (txt) {
     
         } else if (line === 'skip') {
             data.push(data[counter]);
-            data.splice(counter, count);
+            data.splice(counter, 1);
     
             console.log(`\nPertanyaan: ${data[counter].definition}`);
             count = 1;
