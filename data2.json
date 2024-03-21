@@ -1,7 +1,7 @@
 [
     {
         "title": "aku mau tidur",
-        "complete": true,
+        "complete": false,
         "tags": [
             "bantal",
             "guling"
@@ -9,27 +9,25 @@
     },
     {
         "title": "aku mau makan",
-        "complete": false,
+        "complete": true,
         "tags": [
-            "lauk"
+            "lauk",
+            "cimol"
         ]
     },
     {
         "title": "aku mau jajan",
         "complete": true,
         "tags": [
-            "seblak"
+            "seblak",
+            "cimol",
+            "cendol",
+            "yakult"
         ]
     },
     {
-        "title": "saya mau mandi",
-        "complete": false,
-        "tags": [
-            "sabun",
-            "mandi",
-            "sikat",
-            "gigi",
-            "anduk"
-        ]
+        "title": "futsal dulu",
+        "complete": true,
+        "tags": []
     }
 ]

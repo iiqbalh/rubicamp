@@ -16,7 +16,7 @@ switch (txt) {
     case "list":
         console.log(`daftar kerjaan:`);
         data.forEach((item, index) => {
-            console.log(`${index + 1}. [${item.complete ? 'X' : ''}] ${item.title}`);
+            console.log(`${index + 1}. [${item.complete ? 'X' : ' '}] ${item.title}`);
         });
         break;
 
@@ -98,9 +98,9 @@ switch (txt) {
         break;
 
     default:
-        console.log('daftar pekerjaan:')
         const txt9 = process.argv[2];
         if (txt9) {
+            console.log('daftar pekerjaan:')
             result = txt9.split(":");
             data.forEach((items, index) => {
                 if (items.tags.includes(result[1])) {
