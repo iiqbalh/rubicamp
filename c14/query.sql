@@ -37,7 +37,7 @@ INSERT INTO mahasiswa VALUES
 CREATE TABLE  matakuliah (
     id_matakuliah CHAR(3) PRIMARY KEY NOT NULL,
     nama_matakuliah VARCHAR(50) NOT NULL,
-    sks INTEGER NOT NULL,
+    sks INTEGER NOT NULL
 );
 INSERT INTO matakuliah VALUES
 ("111","analisis farmasi", "2"),
