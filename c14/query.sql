@@ -37,18 +37,14 @@ INSERT INTO mahasiswa VALUES
 CREATE TABLE  matakuliah (
     id_matakuliah CHAR(3) PRIMARY KEY NOT NULL,
     nama_matakuliah VARCHAR(50) NOT NULL,
-    sks VARCHAR(100) NOT NULL,
-    nim CHAR(4) NOT NULL,
-    id_dosen CHAR(2) NOT NULL,
-    FOREIGN KEY(nim) REFERENCES mahasiswa(nim),
-    FOREIGN KEY(id_dosen) REFERENCES dosen(id_dosen)
+    sks INTEGER NOT NULL,
 );
 INSERT INTO matakuliah VALUES
-("111","analisis farmasi", "2", "0002", "01"),
-("222","aljabar linear", "2", "0005", "02"),
-("333","algoritma dan pemrograman", "2", "0001", "03"),
-("444","sosiologi", "1", "0003", "04"),
-("555","biologi kedokteran", "2", "0004", "05");
+("111","analisis farmasi", "2"),
+("222","aljabar linear", "2"),
+("333","algoritma dan pemrograman", "2"),
+("444","sosiologi", "1"),
+("555","biologi kedokteran", "2");
 
 CREATE TABLE mengajar (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
