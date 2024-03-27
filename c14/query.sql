@@ -26,18 +26,14 @@ CREATE TABLE mahasiswa (
     jurusan VARCHAR(50) NOT NULL,
     alamat TEXT NOT NULL,
     id_jurusan CHAR(2) NOT NULL,
-    id_matakuliah CHAR(3) NOT NULL,
-    id_dosen CHAR(2) NOT NULL,
     FOREIGN KEY(id_jurusan) REFERENCES jurusan(id_jurusan)
-    FOREIGN KEY(id_matakuliah) REFERENCES matakuliah(id_matakuliah),
-    FOREIGN KEY(id_dosen) REFERENCES dosen(id_dosen)
 );
 INSERT INTO mahasiswa VALUES
-("0001","iqbal", "teknik informatika", "bandung", "05", "333", "03"),
-("0002","fauzi", "farmasi", "jakarta", "02", "111", "01"),
-("0003","yuri", "psikolog", "ciamis", "03", "444", "04"),
-("0004","cika", "kedokteran", "garut", "01", "555", "05"),
-("0005","ayu", "teknik komputer", "bandung", "04", "222", "02");
+("0001","iqbal", "teknik informatika", "bandung", "05"),
+("0002","fauzi", "farmasi", "jakarta", "02"),
+("0003","yuri", "psikolog", "ciamis", "03"),
+("0004","cika", "kedokteran", "garut", "01"),
+("0005","ayu", "teknik komputer", "bandung", "04");
 
 CREATE TABLE  matakuliah (
     id_matakuliah CHAR(3) PRIMARY KEY NOT NULL,
