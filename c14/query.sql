@@ -23,17 +23,16 @@ INSERT INTO jurusan VALUES
 CREATE TABLE mahasiswa (
     nim CHAR(4) PRIMARY KEY NOT NULL,
     nama_mahasiswa VARCHAR(50) NOT NULL,
-    jurusan VARCHAR(50) NOT NULL,
     alamat TEXT NOT NULL,
     id_jurusan CHAR(2) NOT NULL,
     FOREIGN KEY(id_jurusan) REFERENCES jurusan(id_jurusan)
 );
 INSERT INTO mahasiswa VALUES
-("0001","iqbal", "teknik informatika", "bandung", "05"),
-("0002","fauzi", "farmasi", "jakarta", "02"),
-("0003","yuri", "psikolog", "ciamis", "03"),
-("0004","cika", "kedokteran", "garut", "01"),
-("0005","ayu", "teknik komputer", "bandung", "04");
+("0001","iqbal", "bandung", "05"),
+("0002","fauzi", "jakarta", "02"),
+("0003","yuri", "ciamis", "03"),
+("0004","cika", "garut", "01"),
+("0005","ayu", "bandung", "04");
 
 CREATE TABLE  matakuliah (
     id_matakuliah CHAR(3) PRIMARY KEY NOT NULL,
