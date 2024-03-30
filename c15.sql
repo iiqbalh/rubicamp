@@ -66,13 +66,14 @@ USING(nim)
 WHERE nilai <= 'B';
 
 --task 4
-SELECT nim, id_jurusan, id_matakuliah, sks, nama_mahasiswa, umur, alamat, nilai 
+SELECT nim, nama_mahasiswa, SUM(sks) AS sks 
 FROM mengikuti 
 JOIN mahasiswa 
 USING(nim) 
 JOIN matakuliah 
 USING(id_matakuliah) 
-WHERE sks > 10;
+GROUP BY nim 
+HAVING SKS > 10;
 
 --task 5
 SELECT nim, id_jurusan, id_matakuliah, matakuliah, nama_mahasiswa, umur, alamat, nilai 
@@ -85,14 +86,10 @@ WHERE matakuliah
 LIKE '%data mining%';
 
 --task 6
-SELECT nim, id_jurusan, id_dosen, nama_dosen, nama_mahasiswa, umur, alamat 
-FROM membimbing 
+SELECT id_dosen, nama_dosen, count(id_dosen) AS jumlah_mahasiswa FROM membimbing 
 JOIN dosen 
 USING(id_dosen) 
-JOIN mahasiswa 
-USING(nim) 
-JOIN jurusan 
-USING(id_jurusan);
+GROUP BY id_dosen;
  
 --task 7
 SELECT * 

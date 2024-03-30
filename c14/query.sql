@@ -5,9 +5,7 @@ CREATE TABLE dosen (
 INSERT INTO dosen VALUES
 ("01","abdul"),
 ("02","malik"),
-("03","siti"),
-("04","ahmad"),
-("05","reni");
+("03","siti");
 
 CREATE TABLE jurusan (
     id_jurusan CHAR(2) PRIMARY KEY NOT NULL,
@@ -15,10 +13,8 @@ CREATE TABLE jurusan (
 );
 INSERT INTO jurusan VALUES
 ("01","kedokteran"),
-("02","farmasi"),
-("03","psikologi"),
-("04","teknik komputer"),
-("05","teknik informatika");
+("02","teknik komputer"),
+("03","teknik informatika");
 
 CREATE TABLE mahasiswa (
     nim CHAR(4) PRIMARY KEY NOT NULL,
@@ -29,11 +25,11 @@ CREATE TABLE mahasiswa (
     FOREIGN KEY(id_jurusan) REFERENCES jurusan(id_jurusan)
 );
 INSERT INTO mahasiswa VALUES
-("0001", "05", "iqbal", "19", "bandung"),
+("0001", "03", "iqbal", "19", "bandung"),
 ("0002", "02", "fauzi", "24", "jakarta"),
 ("0003", "03", "yuri", "27", "ciamis"),
-("0004", "01", "cika", "19", "garut"),
-("0005", "04", "ayu", "22", "bandung");
+("0004", "03", "cika", "19", "garut"),
+("0005", "01", "ayu", "22", "bandung");
 
 CREATE TABLE  matakuliah (
     id_matakuliah CHAR(3) PRIMARY KEY NOT NULL,
@@ -41,11 +37,9 @@ CREATE TABLE  matakuliah (
     sks INTEGER NOT NULL
 );
 INSERT INTO matakuliah VALUES
-("111","analisis farmasi", "9"),
-("222","aljabar linear, data mining", "19"),
-("333","algoritma dan pemrograman, data mining", "20"),
-("444","sosiologi", "8"),
-("555","biologi kedokteran, data mining", "24");
+("111","aljabar linear, data mining", "9"),
+("222","algoritma dan pemrograman, data mining", "20"),
+("333","biologi kedokteran", "24");
 
 CREATE TABLE mengajar (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -57,9 +51,7 @@ CREATE TABLE mengajar (
 INSERT INTO mengajar (id_dosen, id_matakuliah) VALUES
 ("01","111"),
 ("02","222"),
-("03","333"),
-("04","444"),
-("05","555");
+("03","333");
 
 CREATE TABLE membimbing (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -69,11 +61,11 @@ CREATE TABLE membimbing (
     FOREIGN KEY(id_dosen) REFERENCES dosen(id_dosen)
 );
 INSERT INTO membimbing (nim, id_dosen) VALUES
-("0002", "01"),
-("0005", "02"),
+("0005", "01"),
+("0002", "02"),
 ("0001", "03"),
-("0003", "04"),
-("0004", "05");
+("0003", "03"),
+("0004", "03");
 
 CREATE TABLE mengikuti (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -84,8 +76,8 @@ CREATE TABLE mengikuti (
     FOREIGN KEY(id_matakuliah) REFERENCES matakuliah(id_matakuliah)
 );
 INSERT INTO mengikuti (nim, id_matakuliah, nilai) VALUES
-("0001","333", "B"),
+("0001","222", "B"),
 ("0002","111", "E"),
-("0003","444", "B"),
-("0004","555", "D"),
-("0005","222", "A");
+("0003","222", "B"),
+("0004","222", "D"),
+("0005","333", "A");
