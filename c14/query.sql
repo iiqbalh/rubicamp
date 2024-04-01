@@ -49,9 +49,9 @@ CREATE TABLE mengajar (
     FOREIGN KEY(id_matakuliah) REFERENCES matakuliah(id_matakuliah)
 );
 INSERT INTO mengajar (id_dosen, id_matakuliah) VALUES
-("01","111"),
-("02","222"),
-("03","333");
+("01","333"),
+("02","111"),
+("03","222");
 
 CREATE TABLE membimbing (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -66,6 +66,7 @@ INSERT INTO membimbing (nim, id_dosen) VALUES
 ("0001", "03"),
 ("0003", "03"),
 ("0004", "03");
+
 
 CREATE TABLE mengikuti (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

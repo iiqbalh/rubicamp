@@ -86,10 +86,14 @@ WHERE matakuliah
 LIKE '%data mining%';
 
 --task 6
-SELECT id_dosen, nama_dosen, count(id_dosen) AS jumlah_mahasiswa FROM membimbing 
+SELECT id_dosen, nama_dosen, count(id_dosen) AS jumlah_mahasiswa 
+FROM mengajar 
+JOIN membimbing 
+USING(id_dosen) 
 JOIN dosen 
 USING(id_dosen) 
 GROUP BY id_dosen;
+
  
 --task 7
 SELECT * 
