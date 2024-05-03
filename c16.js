@@ -57,7 +57,7 @@ class CarFactory {
     }
 
     guaranteeSimulationYear(simulationYear) {
-        console.log(`hassil simulasi garansi semua mobil pada tahun ${simulationYear}: `);
+        console.log(`hasil simulasi garansi semua mobil pada tahun ${simulationYear}: `);
         this.cars.forEach((car, index) => {
         console.log(`\nno.${index + 1}
         \nvarian   : ${car.varian}
@@ -67,7 +67,7 @@ class CarFactory {
         \ntyre     : ${car.tyre.brand} ${car.tyre.size} inch
         \nyear     : ${car.year}
         \nwarranty : ${car.warranty} year\n`)
-        console.log(`status on ${simulationYear} this guarantee status is ${(car.year + car.warranty === simulationYear) ? "active" : "expired"}`);
+        console.log(`status on ${simulationYear} this guarantee status is ${car.year + car.warranty >= simulationYear ? "active" : "expired"}`);
         })
     }
 
