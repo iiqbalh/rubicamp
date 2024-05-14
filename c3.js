@@ -16,25 +16,25 @@ const roman = num => {
         { value: 1, numeral: 'I' }
     ];
 
-    // let romanNumeral = '';
+    let romanNumeral = '';
 
-    // for (let i = 0; i < romanNumerals.length; i++) {
+    for (let i = 0; i < romanNumerals.length; i++) {
 
-    //     while (num >= romanNumerals[i].value) {
-    //         romanNumeral += romanNumerals[i].numeral;
-    //         num -= romanNumerals[i].value;
-    //     };
+        while (num >= romanNumerals[i].value) {
+            romanNumeral += romanNumerals[i].numeral;
+            num -= romanNumerals[i].value;
+        };
         
-    // };
+    };
 
     return romanNumerals;
 }
 console.log(roman())
-// console.log("Script Testing untuk Konversi Romawi\n");
-// console.log("input | expected | result");
-// console.log("------|----------|-------");
-// console.log("4     | IV       | ", roman(4));
-// console.log("9     | IX       | ", roman(9));
-// console.log("13    | XIII     | ", roman(13));
-// console.log("1453  | MCDLIII  | ", roman(1453));
-// console.log("1646  | MDCXLVI  | ", roman(1646));
+console.log("Script Testing untuk Konversi Romawi\n");
+console.log("input | expected | result");
+console.log("------|----------|-------");
+console.log("4     | IV       | ", roman(4));
+console.log("9     | IX       | ", roman(9));
+console.log("13    | XIII     | ", roman(13));
+console.log("1453  | MCDLIII  | ", roman(1453));
+console.log("1646  | MDCXLVI  | ", roman(1646));
