@@ -3,7 +3,6 @@ const path = require('path')
 const redline = require('node:readline')
 
 var Table = require('cli-table')
-const { Console } = require('console')
 const dbpath = path.join(path.resolve(), 'db', 'university.db')
 const db = new sqlite3.Database(dbpath)
 
