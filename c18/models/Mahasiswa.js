@@ -45,5 +45,5 @@ export default class Mahasiswa {
             if (err) console.log(err)
             else data
         })
-    };
+    }
 }    

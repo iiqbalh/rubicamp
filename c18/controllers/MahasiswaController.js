@@ -1,6 +1,6 @@
 import Mahasiswa from '../models/Mahasiswa.js'
 import Jurusan from '../models/Jurusan.js'
-import { showMahasiswa, findMahasiswa } from '../views/Mahasiswa/view.js'
+import { showMahasiswa, resultMahasiswa } from '../views/Mahasiswa/view.js'
 import { showJurusan } from '../views/Jurusan/view.js'
 import { rl } from '../models/connect.js'
 import { line, home } from '../main2.js'
@@ -21,7 +21,7 @@ silahkan pilih opsi dibawah ini :
         `)
         line()
 
-        rl.question('masukkan salah satu no. dari opsi diatas : ', (answer) => {
+        rl.question('masukan salah satu no. dari opsi diatas : ', (answer) => {
             switch (answer) {
                 case '1':
                     MahasiswaController.daftar()
@@ -63,8 +63,9 @@ silahkan pilih opsi dibawah ini :
             Mahasiswa.cari(nim, function (data) {
                 if (!data) {
                     console.log(`Mahasiswa dengan NIM ${nim}, tidak terdaftar`);
+                    MahasiswaController.firstMenu()
                 } else {
-                    findMahasiswa(data)
+                    resultMahasiswa(data)
                     MahasiswaController.firstMenu()
                 }
             })
@@ -91,7 +92,7 @@ silahkan pilih opsi dibawah ini :
                                         Jurusan.daftar(function (dataJurusan) {
                                             showJurusan(dataJurusan)
                                             rl.question('ID jurusan :', idJurusan => {
-                                                console.log(dataJurusan[idJurusan])
+
                                                 Mahasiswa.tambah(nim, idJurusan, nama, umur, alamat)
                                                 console.log('Mahasiswa telah ditambahkan')
                                                 Mahasiswa.daftar(function (data) {
@@ -118,7 +119,7 @@ silahkan pilih opsi dibawah ini :
                     console.log(`Data mahasiswa dengan NIM ${nim}, telah dihapus`)
                     MahasiswaController.firstMenu()
                 } else {
-                    console.log(`Gagal menghapus data Mahasiswa.\nMahasiswa dengan nim ${nim}, tidak terdaftar`);
+                    console.log(`Mahasiswa dengan nim ${nim}, tidak terdaftar`);
                     MahasiswaController.firstMenu()
                 }
             })

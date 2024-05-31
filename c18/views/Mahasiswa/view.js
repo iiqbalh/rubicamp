@@ -38,7 +38,7 @@ export function showMahasiswa(data = []) {
 
 
 
-export function findMahasiswa(data) {
+export function resultMahasiswa(data) {
     line()
 console.log(`Detail mahasiswa dengan NIM '${data.nim}' :
 NIM     : ${data.nim}

@@ -1,6 +1,10 @@
 import { rl } from './models/connect.js'
 import { loginUser } from './controllers/UserController.js'
 import { MahasiswaController } from './controllers/MahasiswaController.js'
+import { JurusanController } from './controllers/JurusanController.js'
+import { DosenController } from './controllers/DosenController.js'
+import { MatakuliahController } from './controllers/MatakuliahController.js'
+//import { KontrakController } from './controllers/KontrakController.js'
  
 
 
@@ -39,22 +43,22 @@ silahkan pilih opsi dibawah ini
 `)
     line()
 
-    rl.question("Masukkan salah satu nomor dari opsi diatas : ", (index) => {
+    rl.question("Masukan salah satu nomor dari opsi diatas : ", (index) => {
         switch (index) {
             case '1':
                 MahasiswaController.firstMenu()
                 break;
             case '2':
-                MahasiswaController.firstMenu()
+                JurusanController.firstMenu()
                 break;
             case '3':
-                MahasiswaController.firstMenu()
+                DosenController.firstMenu()
                 break;
             case '4':
-                MahasiswaController.firstMenu()
+                MatakuliahController.firstMenu()
                 break;
             case '5':
-                MahasiswaController.firstMenu()
+                KontrakController.firstMenu()
                 break;
             case '6':
                 line();

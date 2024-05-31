@@ -15,8 +15,8 @@ export default class Jurusan {
         })
     }
 
-    static cari(nim, callback) {
-        db.get("select * from jurusan where id_jurusan = ?", [nim], (err, data) => {
+    static cari(id, callback) {
+        db.get("select * from jurusan where id_jurusan = ?", [id], (err, data) => {
             if (err) return console.log("please contact administrator", err);
 
             callback(data)
@@ -33,7 +33,14 @@ export default class Jurusan {
     }
 
     static tambah(id_jurusan, jurusan) {
-        const dataJurusan = new Jurusan({id_jurusan: id_jurusan, jurusan : jurusan});
+        const dataJurusan = new Jurusan(id_jurusan, jurusan);
         return dataJurusan.simpan()
+    }
+
+    static hapus(id) {
+        db.run("DELETE FROM jurusan WHERE id_jurusan = ?", [id], (err, data) => {
+            if (err) console.log(err)
+            else data
+        })
     }
 }    
