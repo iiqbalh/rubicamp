@@ -1,6 +1,7 @@
 import { db } from './connect.js'
 
 
+
 export default class Mahasiswa {
     constructor(nim, id_jurusan, nama_mahasiswa, tanggalLahir, alamat) {
         this.nim = nim

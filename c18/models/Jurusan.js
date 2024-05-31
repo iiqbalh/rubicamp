@@ -1,6 +1,7 @@
 import { db } from './connect.js'
 
 
+
 export default class Jurusan {
     constructor(id_jurusan, jurusan) {
         this.id_jurusan = id_jurusan

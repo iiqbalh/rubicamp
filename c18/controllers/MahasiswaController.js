@@ -120,6 +120,7 @@ silahkan pilih opsi dibawah ini :
                     MahasiswaController.firstMenu()
                 } else {
                     console.log(`Mahasiswa dengan nim ${nim}, tidak terdaftar`);
+                    
                     MahasiswaController.firstMenu()
                 }
             })

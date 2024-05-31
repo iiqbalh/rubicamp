@@ -98,6 +98,7 @@ silahkan pilih opsi dibawah ini :
                     DosenController.firstMenu()
                 } else {
                     console.log(`Dosen dengan ID ${id}, tidak terdaftar`);
+                    
                     DosenController.firstMenu()
                 }
             })

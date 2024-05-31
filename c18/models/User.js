@@ -1,5 +1,6 @@
 import { db } from './connect.js'
 
+
 export default class User {
     constructor(obj) {
         this.userName = obj.userName

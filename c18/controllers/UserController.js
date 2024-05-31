@@ -12,6 +12,7 @@ export function loginUser() {
                 loginUser()
             } else {
                 rl.question('password : ', password => {
+                    
                     User.password(password, function (dataPass) {
 
                         if (!dataPass) {

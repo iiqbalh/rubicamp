@@ -1,6 +1,7 @@
 import { db } from './connect.js'
 
 
+
 export default class Dosen {
     constructor(id_dosen, nama_dosen) {
         this.id_dosen = id_dosen

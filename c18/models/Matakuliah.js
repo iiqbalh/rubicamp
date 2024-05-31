@@ -1,6 +1,7 @@
 import { db } from './connect.js'
 
 
+
 export default class Matakuliah {
     constructor(id_matakuliah, matakuliah, sks) {
         this.id_matakuliah = id_matakuliah

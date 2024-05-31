@@ -100,6 +100,7 @@ silahkan pilih opsi dibawah ini :
                     MatakuliahController.firstMenu()
                 } else {
                     console.log(`Matakuliah dengan ID ${id}, tidak terdaftar`);
+                    
                     MatakuliahController.firstMenu()
                 }
             })

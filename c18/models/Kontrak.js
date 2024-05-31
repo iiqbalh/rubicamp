@@ -1,6 +1,7 @@
 import { db } from './connect.js'
 
 
+
 export default class Kontrak {
     constructor(nim , id_dosen, id_matakuliah, nilai) {
         this.nim = nim

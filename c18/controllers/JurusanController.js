@@ -98,6 +98,7 @@ silahkan pilih opsi dibawah ini :
                     JurusanController.firstMenu()
                 } else {
                     console.log(`Jurusan dengan ID ${id}, tidak terdaftar`);
+                    
                     JurusanController.firstMenu()
                 }
             })
