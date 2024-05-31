@@ -9,10 +9,10 @@ export function option() {
     line()
     console.log(`
 silahkan pilih opsi di bawah ini
-[1] Daftar Matakuliah
-[2] Cari Matakuliah
-[3] Tambah Matakuliah
-[4] Hapus Matakuliah
+[1] Daftar Kontrak
+[2] Cari Kontrak
+[3] Tambah Kontrak
+[4] Hapus Kontrak
 [5] Kembali
 `)
     line()
