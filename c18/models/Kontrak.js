@@ -2,22 +2,23 @@ import { db } from './connect.js'
 
 
 export default class Kontrak {
-    constructor(id_matakuliah, matakuliah, sks) {
+    constructor(nim , id_dosen, id_matakuliah, nilai) {
+        this.nim = nim
+        this.id_dosen = id_dosen
         this.id_matakuliah = id_matakuliah
-        this.matakuliah = matakuliah
-        this.sks = sks
+        this.nilai = nilai
     }
 
     static daftar(callback) {
-        db.all("select * from  matakuliah", (err, data) => {
+        db.all("select * from  kontrak", (err, data) => {
             if (err) return console.log("please contact administrator", err);
 
             callback(data)
         })
     }
 
-    static cari(id, callback) {
-        db.get("select * from matakuliah where id_matakuliah = ?", [id], (err, data) => {
+    static cari(nim, callback) {
+        db.get("select * from kontrak where nim = ?", [nim], (err, data) => {
             if (err) return console.log("please contact administrator", err);
 
             callback(data)
@@ -25,7 +26,7 @@ export default class Kontrak {
     }
 
     simpan() {
-        db.run("INSERT INTO matakuliah (id_matakuliah, matakuliah, sks) VALUES (?, ?, ?)", [this.id_matakuliah, this.matakuliah, this.sks],
+        db.run("INSERT INTO kontrak (nim, id_dosen, id_matakuliah, nilai) VALUES (?, ?, ?, ?)", [this.nim, this.id_dosen ,this.id_matakuliah, this.nilai],
             (err, data) => {
                 if (err) console.log(err)
                 else data
@@ -33,13 +34,13 @@ export default class Kontrak {
 
     }
 
-    static tambah(id_matakuliah, matakuliah, sks) {
-        const dataMatakuliah = new Matakuliah(id_matakuliah, matakuliah, sks);
-        return dataMatakuliah.simpan()
+    static tambah(nim, id_dosen, id_matakuliah, nilai) {
+        const dataKontrak = new Matakuliah(nim, id_dosen, id_matakuliah, nilai);
+        return dataKontrak.simpan()
     }
 
-    static hapus(id) {
-        db.run("DELETE FROM matakuliah WHERE id_matakuliah = ?", [id], (err, data) => {
+    static hapus(nim) {
+        db.run("DELETE FROM kontrak WHERE nim = ?", [nim], (err, data) => {
             if (err) console.log(err)
             else data
         })

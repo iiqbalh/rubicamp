@@ -22,14 +22,14 @@ silahkan pilih opsi di bawah ini
 
 
 
-export function showMatakuliah(data = []) {
+export function showKontrak(data = []) {
     let table = new Table({
-        head: ['id_Matakuliah', 'Matakuliah', 'SKS']
-        , colWidths: [10, 40, 10]
+        head: ['id', 'nim', 'id_dosen', 'id_matakuliah', 'nilai']
+        , colWidths: [10, 15, 10, 10, 12]
     });
 
     data.forEach(data => {
-        table.push([data.id_matakuliah, data.matakuliah, data.sks])    
+        table.push([data.id, data.nim, data.id_dosen, data.id_matakuliah, data.nilai])    
     });
     console.log(table.toString())
 };
@@ -38,12 +38,3 @@ export function showMatakuliah(data = []) {
 
 
 
-export function resultMatakuliah(data) {
-    line()
-    console.log(`
-Detail Matakuliah dengan ID '${data.id_matakuliah}' :
-ID Matakuliah : ${data.id_matakuliah}
-Matakuliah    : ${data.matakuliah}
-SKS           : ${data.sks}
-    `)
-};

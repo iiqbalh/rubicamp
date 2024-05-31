@@ -1,11 +1,11 @@
-import Matakuliah from '../models/Matakuliah.js'
-import { showMatakuliah, resultMatakuliah } from '../views/Matakuliah/view.js'
+import Kontrak from '../models/Kontrak.js'
+import { showKontrak } from '../views/Kontrak/view.js'
 import { rl } from '../models/connect.js'
 import { line, home } from '../main2.js'
 
 
 
-export class MatakuliahController {
+export class KontrakController {
 
     static firstMenu() {
         line()
@@ -15,56 +15,61 @@ silahkan pilih opsi dibawah ini :
 [2] Cari Matakuliah
 [3] Tambah Matakuliah
 [4] Hapus Matakuliah
-[5] Kembali
+[5] Update Nilai
+[6] Keluar
         `)
         line()
 
         rl.question('masukan salah satu no. dari opsi diatas : ', (answer) => {
             switch (answer) {
                 case '1':
-                    MatakuliahController.daftar()
+                    KontrakController.daftar()
                     break;
 
                 case '2':
-                    MatakuliahController.cari()
+                    KontrakController.cari()
                     break;
 
                 case '3':
-                    MatakuliahController.tambah()
+                    KontrakController.tambah()
                     break;
 
                 case '4':
-                    MatakuliahController.hapus()
+                    KontrakController.hapus()
                     break;
 
                 case '5':
+                    KontrakController.hapus()
+                    break;
+
+                case '6':
                     home()
                     break;
 
                 default:
                     console.log('opsi yang anda pilih tidak tersedia')
-                    MatakuliahController.menu()
+                    KontrakController.menu()
                     break;
             }
         })
     }
 
     static daftar() {
-        Matakuliah.daftar(function (data) {
-            showMatakuliah(data)
-            MatakuliahController.firstMenu()
+        Kontrak.daftar(function (data) {
+            showKontrak(data)
+            KontrakController.firstMenu()
         })
     }
 
     static cari() {
-        rl.question('Masukkan ID Matakuliah : ', id => {
-            Matakuliah.cari(id, function (data) {
+        rl.question('Masukkan NIM Mahasiswa : ', nim => {
+            Kontrak.cari(id, function (data) {
                 if (!data) {
-                    console.log(`Matakuliah dengan ID ${id}, tidak terdaftar`);
-                    MatakuliahController.firstMenu()
+                    console.log(`Mahasiswa dengan NIM ${nim}, tidak terdaftar`);
+                    KontrakController.firstMenu()
                 } else {
                     resultMatakuliah(data)
-                    MatakuliahController.firstMenu()
+                    KontrakController.firstMenu()
                 }
             })
         })
@@ -72,10 +77,10 @@ silahkan pilih opsi dibawah ini :
 
     static tambah() {
         console.log('lengkapi data di bawah ini :')
-        Matakuliah.daftar(function (dataMatakuliah) {
-            if (!dataMatakuliah) {
+        Kontrak.daftar(function (dataKontrak) {
+            if (!dataKontrak) {
                 console.log('Terjadi kesalahan saat menampilkan data. Silahkan coba lagi');
-                MatakuliahController.firstMenu()
+                KontrakController.firstMenu()
             } else {
                 showMatakuliah(dataMatakuliah)
                 rl.question('ID Matakuliah :', id => {
@@ -92,7 +97,7 @@ silahkan pilih opsi dibawah ini :
     }
 
     static hapus() {
-        rl.question('Masukan ID Matakuliah : ', id => {
+        rl.question('Masukan NIM Mahasiswa : ', id => {
             Matakuliah.cari(id, function (data) {
                 if (data) {
                     Matakuliah.hapus(data.id_matakuliah)
