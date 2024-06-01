@@ -24,7 +24,7 @@ silahkan pilih opsi di bawah ini
 
 
 export function showMatakuliah(data = []) {
-    let table = new Table({
+    const table = new Table({
         head: ['id_Matakuliah', 'Matakuliah', 'SKS']
         , colWidths: [10, 40, 10]
     });

@@ -24,7 +24,7 @@ silahkan pilih opsi di bawah ini
 
 
 export function showJurusan(data = []) {
-    let table = new Table({
+    const table = new Table({
         head: ['id_Jurusan', 'Jurusan']
         , colWidths: [10, 20]
     });

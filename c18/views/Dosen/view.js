@@ -24,7 +24,7 @@ silahkan pilih opsi di bawah ini
 
 
 export function showDosen(data = []) {
-    let table = new Table({
+    const table = new Table({
         head: ['id_Dosen', 'Dosen']
         , colWidths: [10, 20]
     });

@@ -1,7 +1,13 @@
-import Kontrak from '../models/Kontrak.js'
-import { showKontrak } from '../views/Kontrak/view.js'
 import { rl } from '../models/connect.js'
 import { line, home } from '../main2.js'
+import Kontrak from '../models/Kontrak.js'
+import Matakuliah from '../models/Matakuliah.js'
+import Dosen from '../models/Dosen.js'
+import { showKontrak, showKontrak2, showKontrak3, showKontrak4, showKontrak5 } from '../views/Kontrak/view.js'
+import { showMatakuliah } from '../views/Matakuliah/view.js'
+import { showDosen } from '../views/Dosen/view.js'
+
+
 
 
 
@@ -11,10 +17,10 @@ export class KontrakController {
         line()
         console.log(`
 silahkan pilih opsi dibawah ini : 
-[1] Daftar Matakuliah
-[2] Cari Matakuliah
-[3] Tambah Matakuliah
-[4] Hapus Matakuliah
+[1] Daftar Kontrak
+[2] Cari Kontrak
+[3] Tambah Kontrak
+[4] Hapus Kontrak
 [5] Update Nilai
 [6] Keluar
         `)
@@ -39,7 +45,7 @@ silahkan pilih opsi dibawah ini :
                     break;
 
                 case '5':
-                    KontrakController.hapus()
+                    KontrakController.update()
                     break;
 
                 case '6':
@@ -62,33 +68,43 @@ silahkan pilih opsi dibawah ini :
     }
 
     static cari() {
-        rl.question('Masukkan NIM Mahasiswa : ', nim => {
-            Kontrak.cari(id, function (data) {
-                if (!data) {
-                    console.log(`Mahasiswa dengan NIM ${nim}, tidak terdaftar`);
-                    KontrakController.firstMenu()
-                } else {
-                    resultMatakuliah(data)
-                    KontrakController.firstMenu()
-                }
+        Kontrak.daftar2(function (dataKontrak) {
+            showKontrak2(dataKontrak)
+            rl.question('Masukkan NIM Mahasiswa : ', nim => {
+                Kontrak.cari(nim, function (dataKontrak) {
+                    if (!dataKontrak) {
+                        console.log(`Mahasiswa dengan NIM ${nim}, tidak terdaftar`);
+                        KontrakController.firstMenu()
+                    } else {
+                        console.log(`Daftar kontrak mahasiswa dengan NIM ${nim} adalah: `)
+                        showKontrak5([dataKontrak])
+                        KontrakController.firstMenu()
+                    }
+                })
             })
         })
     }
 
     static tambah() {
         console.log('lengkapi data di bawah ini :')
-        Kontrak.daftar(function (dataKontrak) {
+        Kontrak.daftar2(function (dataKontrak) {
             if (!dataKontrak) {
                 console.log('Terjadi kesalahan saat menampilkan data. Silahkan coba lagi');
                 KontrakController.firstMenu()
             } else {
-                showMatakuliah(dataMatakuliah)
-                rl.question('ID Matakuliah :', id => {
-                    rl.question('Matakuliah :', matkul => {
-                        rl.question('SKS :', sks => {
-                            Matakuliah.tambah(id, matkul, sks)
-                            console.log('Matakuliah telah ditambahkan ke database')
-                            MatakuliahController.firstMenu()
+                showKontrak2(dataKontrak)
+                rl.question('Masukan NIM :', nim => {
+                    Matakuliah.daftar(function (data) {
+                        showMatakuliah(data)
+                        rl.question('Masukan ID Matakuliah :', id => {
+                            Dosen.daftar(function (data) {
+                                showDosen(data)
+                                rl.question('Masukan ID Dosen :', idD => {
+                                    Kontrak.tambah(nim, id, idD)
+                                    console.log('Kontrak telah ditambahkan')
+                                    KontrakController.daftar()
+                                })
+                            })
                         })
                     })
                 })
@@ -97,17 +113,38 @@ silahkan pilih opsi dibawah ini :
     }
 
     static hapus() {
-        rl.question('Masukan NIM Mahasiswa : ', id => {
-            Matakuliah.cari(id, function (data) {
+        rl.question('Masukan ID kontrak : ', id => {
+            Kontrak.cariID(id, function (data) {
                 if (data) {
-                    Matakuliah.hapus(data.id_matakuliah)
-                    console.log(`Data Matakuliah dengan ID ${id}, telah dihapus`)
-                    MatakuliahController.firstMenu()
+                    Kontrak.hapus(data.id)
+                    console.log(`Data Kontrak dengan ID ${id}, telah dihapus`)
+                    KontrakController.firstMenu()
                 } else {
-                    console.log(`Matakuliah dengan ID ${id}, tidak terdaftar`);
-                    
-                    MatakuliahController.firstMenu()
+                    console.log(`Kontrak dengan ID ${id}, tidak terdaftar`);
+                    KontrakController.firstMenu()
                 }
+            })
+        })
+    }
+
+    static update() {
+        Kontrak.daftar3(function (data) {
+            showKontrak3(data)
+            rl.question('Masukan NIM Mahasiswa :', nim => {
+                console.log(`Detail mahasiswa dengan NIM '${nim}' : `)
+                Kontrak.daftar4(nim, function(data) {
+                    showKontrak4(data)
+                    rl.question('Masukan ID yang akan dirubah nilainya :', id => {
+                        rl.question('Tulis nilai yang baru :', nilai => {
+                            Kontrak.update(nilai, id)
+                            console.log('Nilai telah diupdate')
+                            Kontrak.daftar3(function (data) {
+                                showKontrak3(data)
+                                KontrakController.firstMenu()
+                            })
+                        })
+                    })
+                })
             })
         })
     }

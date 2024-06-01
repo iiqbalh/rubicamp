@@ -4,7 +4,7 @@ import { MahasiswaController } from './controllers/MahasiswaController.js'
 import { JurusanController } from './controllers/JurusanController.js'
 import { DosenController } from './controllers/DosenController.js'
 import { MatakuliahController } from './controllers/MatakuliahController.js'
-//import { KontrakController } from './controllers/KontrakController.js'
+import { KontrakController } from './controllers/KontrakController.js'
  
 
 
