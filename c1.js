@@ -1,12 +1,6 @@
-const sum = () => {
+function sum() {
 
-  let sum = 0;
-
-  for (const num of arguments) {
-    sum += num;
-  }
-
-  console.log(sum);
+  console.log(Array.from(arguments).reduce((acc, cur) => acc + cur))
 }
 
 sum(1, 2, 7);
