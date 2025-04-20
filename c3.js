@@ -27,9 +27,9 @@ const roman = num => {
         
     };
 
-    return romanNumerals;
+    return romanNumeral;
 }
-console.log(roman())
+
 console.log("Script Testing untuk Konversi Romawi\n");
 console.log("input | expected | result");
 console.log("------|----------|-------");
