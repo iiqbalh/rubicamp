@@ -1,15 +1,15 @@
 const stringManipulation = word => {
-    
-    let arrs = '';
-    lower = word.toLowerCase();
 
-    if (lower[0] == 'a' || lower[0] == 'i' || lower[0] == 'u' || lower[0] == 'e' || lower[0] == 'o') {
-        arrs = lower;
-    } else {
-        arrs = lower.slice(1) + lower[0] + 'nyo';
-    }
+    let result = word.toLowerCase()
+    let vocals = ['aiueo']
 
-    console.log(arrs);
+    vocals.forEach(vocal => {
+        if (vocal.includes(result[0])) {
+            console.log(result)
+        } else {
+            console.log(`${result.slice(1)}${result[0]}nyo`)
+        }
+    })
 }
 
 stringManipulation('AYAM');
