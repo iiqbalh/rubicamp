@@ -1,15 +1,13 @@
 const stringManipulation = word => {
 
-    let result = word.toLowerCase()
-    let vocals = ['aiueo']
+    let wordLow = word.toLowerCase()
+    let vocals = 'aiueo'
 
-    vocals.forEach(vocal => {
-        if (vocal.includes(result[0])) {
-            console.log(result)
-        } else {
-            console.log(`${result.slice(1)}${result[0]}nyo`)
-        }
-    })
+    if (vocals.includes(wordLow[0])) {
+        console.log(wordLow)
+    } else {
+        console.log(`${wordLow.slice(1)}${wordLow[0]}nyo`)
+    }
 }
 
 stringManipulation('AYAM');

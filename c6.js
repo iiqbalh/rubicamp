@@ -1,19 +1,11 @@
 const sentencesManipulation = sentence => {
-    
-    arr2 = [];
-    arr = sentence.split(" ");
+    let arr = sentence.split(" ");
+    let vocals = ['aiueo']
+    const result = []
 
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i][0] == 'a' || arr[i][0] == 'i' || arr[i][0] == 'u' || arr[i][0] == 'e' || arr[i][0] == 'o') {
-            arr2.push(arr[i]);
-        } else if (arr[i][0] == 'A' || arr[i][0] == 'I' || arr[i][0] == 'U' || arr[i][0] == 'E' || arr[i][0] == 'O') {
-            arr2.push(arr[i]);
-        } else {
-            arr2.push(arr[i].slice(1) + arr[i][0] + 'nyo');
-        };
-    };
-
-    console.log(arr2.join(" "));
+    arr.forEach((item, index) => {
+        console.log(item, index)
+    })
 };
 
-sentencesManipulation('Itik MAKAN dengan Orang Utan di sawah');
+sentencesManipulation('itik makan dengan orang utan di sawah');
