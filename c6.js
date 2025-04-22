@@ -1,11 +1,16 @@
 const sentencesManipulation = sentence => {
     let arr = sentence.split(" ");
-    let vocals = ['aiueo']
-    const result = []
+    let vocals = 'aiueo'
+    let result = []
 
-    arr.forEach((item, index) => {
-        console.log(item, index)
+    arr.forEach(item => {
+        if (vocals.includes(item[0])) {
+            result.push(item)
+        } else {
+            result.push(`${item.slice(1)}${item[0]}nyo`)
+        }
     })
+    console.log(result.join(" ").toLowerCase())
 };
 
-sentencesManipulation('itik makan dengan orang utan di sawah');
+sentencesManipulation('itik Makan Dengan orang utan Di sawah');
