@@ -4,17 +4,17 @@ const deretKaskus = n => {
 
     for (let i = 3; i <= n * 3; i += 3) {
         if (i % 5 === 0 && i % 6 === 0) {
-            arr.push("KASKUS")
+            arr.push("KASKUS");
         } else if (i % 5 === 0) {
-            arr.push("KAS")
+            arr.push("KAS");
         } else if (i % 6 === 0) {
-            arr.push("KUS")
+            arr.push("KUS");
         } else {
-            arr.push(i)
+            arr.push(i);
         }
     }
     
-    return arr
+    return arr;
 };
 
 console.log(deretKaskus(10));

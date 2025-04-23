@@ -8,13 +8,12 @@ const roman = (n, result = '') => {
     for (const key in map) {
         if (n >= map[key]) {
             if (n !== 0) {
-                return roman(n - map[key], result += key)
+                return roman(n - map[key], result += key);
             }
         }
     }
 
     return result;
-
 }
 
 console.log("Script Testing untuk Konversi Romawi\n");

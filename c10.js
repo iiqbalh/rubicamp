@@ -1,24 +1,63 @@
-const rl = require('readline').createInterface({
+// const rl = require('readline').createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+
+// rl.question('tulis kalimatmu di sini > ', sentence => {
+
+//     let arr = sentence.split(" ");
+//     let vocals = 'aAiIuUeEoO'
+//     let result = []
+
+//     arr.forEach(item => {
+//         if (vocals.includes(item[0])) {
+//             result.push(item)
+//         } else {
+//             result.push(`${item.slice(1)}${item[0]}nyo`)
+//         }
+//     })
+
+//     console.log('hasil konversi: ', result.join(" ").toLowerCase());
+
+//     rl.close()
+// })
+
+
+
+
+
+
+const { createInterface } = require('node:readline');
+const rl = createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
+    prompt: 'tulis kalimatmu di sini> ',
 });
 
-rl.question('tulis kalimatmu di sini > ', sentence => {
+rl.prompt();
 
-    arr2 = [];
-    arr = sentence.split(" ");
+rl.on('line', (line) => {
+    let arr = line.split(" ");
+    let vocals = 'aAiIuUeEoO';
+    let result = [];
 
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i][0] == 'a' || arr[i][0] == 'i' || arr[i][0] == 'u' || arr[i][0] == 'e' || arr[i][0] == 'o') {
-            arr2.push(arr[i]);
-        } else if (arr[i][0] == 'A' || arr[i][0] == 'I' || arr[i][0] == 'U' || arr[i][0] == 'E' || arr[i][0] == 'O') {
-            arr2.push(arr[i]);
-        } else {
-            arr2.push(arr[i].slice(1) + arr[i][0] + 'nyo');
-        };
-    };
+    switch (line) {
+        case 'hello':
+            console.log('word!');
+            break;
+        default:
+            arr.forEach(item => {
+                if (vocals.includes(item[0])) {
+                    result.push(item);
+                } else {
+                    result.push(`${item.slice(1)}${item[0]}nyo`);
+                }
+            })
+            console.log('hasil konversi: ', result.join(" ").toLowerCase());
 
-    console.log('hasil konversi: ', arr2.join(" "));
-
-    rl.close();
-})
+    }
+    rl.prompt();
+}).on('close', () => {
+    console.log('Good bye!');
+    process.exit(0);
+});

@@ -11,7 +11,6 @@ const rl = require('readline').createInterface({
     prompt: 'Tebakan: '
 });
 
-
 let counter = 0;
 
 console.log(`Pertanyaan: ${data[counter].definition}`);
