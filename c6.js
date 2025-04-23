@@ -1,6 +1,6 @@
 const sentencesManipulation = sentence => {
     let arr = sentence.split(" ");
-    let vocals = 'aiueo'
+    let vocals = 'aAiIuUeEoO'
     let result = []
 
     arr.forEach(item => {

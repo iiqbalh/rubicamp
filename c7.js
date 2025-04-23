@@ -1,17 +1,9 @@
-const weirdMultiply = sentence => {
-    
-    str = sentence.toString();
-    count = 1;
+function weirdMultiply(sentence) {
 
-    for (let i = 0; i < str.length; i++) {
-        count *= str[i];
-    }
-
-    if (str < 10) {
-        return count;
-    } else {
-        return weirdMultiply(count);
-    }
+    let num = 1
+    for(let i of sentence.toString()) num *= i
+    if(sentence < 10) return num
+    else return weirdMultiply(num)   
 
 }
 
