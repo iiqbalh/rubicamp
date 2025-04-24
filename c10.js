@@ -54,7 +54,6 @@ rl.on('line', (line) => {
                 }
             })
             console.log('hasil konversi: ', result.join(" ").toLowerCase());
-
     }
     rl.prompt();
 }).on('close', () => {
