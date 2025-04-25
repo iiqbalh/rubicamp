@@ -126,3 +126,78 @@
 //         break;
 // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const { readFileSync,writeFileSync } = require('node:fs');
+const path = readFileSync('data.json', 'utf-8');
+const data = JSON.parse(path);
+
+
+switch (process.argv[2]) {
+    case 'add':
+        const text = process.argv.splice(3, 10).join(" ")
+        data.push({title: text, compelete: false, tags: []})
+        writeFileSync('data.json', JSON.stringify(data), 'utf-8')
+        console.log(`"${text}" telah ditambahkan.`)
+        break;
+    case 'list':
+        console.log('benar')
+        break;
+    case 'delete':
+        console.log('benar')
+        break;
+    case 'task':
+        console.log('benar')
+        break;
+    case 'complete':
+        console.log('benar')
+        break;
+    case 'uncomplete':
+        console.log('benar')
+        break;
+    case 'list:outstanding':
+        console.log('benar')
+        break;
+    case 'list:completed':
+        console.log('benar')
+        break;
+    case 'tag':
+        console.log('benar')
+        break;
+    case 'filter':
+        console.log('benar')
+        break;
+
+    default:
+        console.log(`>>> JS TODO <<<
+$ node todo.js <command>
+$ node todo.js list
+$ node todo.js task <task_id>
+$ node todo.js add <task_content>
+$ node todo.js delete <task_id>
+$ node todo.js complete <task_id>
+$ node todo.js uncomplete <task_id>
+$ node todo.js list:outstanding asc|desc
+$ node todo.js list:completed asc|desc
+$ node todo.js tag <task_id> <tag_name_1> <tag_name_2> ... <tag_name_N>
+$ node todo.js filter: <tag_name>`);
+        break;
+}
