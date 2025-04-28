@@ -1,4 +1,3 @@
-const { error } = require('node:console');
 const { readFileSync, writeFileSync } = require('node:fs');
 const path = readFileSync('data.json', 'utf-8');
 const data = JSON.parse(path);
@@ -12,8 +11,8 @@ switch (process.argv[2]) {
         console.log(`"${text}" telah ditambahkan.`)
         break;
     case 'list':
+        console.log('Daftar Pekerjaan: ');
         data.forEach((item, index) => {
-            console.log('Daftar Pekerjaan: ');
             console.log(`${index + 1}. [${item.compelete ? 'X' : ' '}] ${item.title}.`);
         });
         break;
@@ -23,7 +22,10 @@ switch (process.argv[2]) {
         writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf-8')
         break;
     case 'task':
-        console.log('benar')
+        console.log(`Task ${process.argv[3]}:\n
+Title     : ${data[process.argv[3] - 1].title}
+Completed : ${data[process.argv[3] - 1].compelete}
+Tags      : ${data[process.argv[3] - 1].tags}`)
         break;
     case 'complete':
         data[process.argv[3] - 1].compelete = true;
@@ -80,13 +82,11 @@ switch (process.argv[2]) {
 
     default:
         let filter = process.argv[2].split(':')
-        if (filter[1]) {
+        if (filter) {
             data.forEach((item, index) => {
                 if (item.tags.includes(filter[1])) {
                     console.log('Daftar Pekerjaan:')
                     console.log(`${index + 1}. [${item.compelete ? 'X' : ' '}] ${item.title}.`);
-                } else {
-                    return error;
                 }
             })
         } else {
