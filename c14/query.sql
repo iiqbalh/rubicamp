@@ -45,40 +45,14 @@ INSERT INTO matakuliah VALUES
 ("333","biologi kedokteran", "24");
 
 
-CREATE TABLE mengajar (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_dosen CHAR(2) NOT NULL,
-    id_matakuliah CHAR(3) NOT NULL,
-    FOREIGN KEY(id_dosen) REFERENCES dosen(id_dosen),
-    FOREIGN KEY(id_matakuliah) REFERENCES matakuliah(id_matakuliah)
-)
-INSERT INTO mengajar (id_dosen, id_matakuliah) VALUES
-("01","333"),
-("02","111"),
-("03","222");
-
-
-CREATE TABLE membimbing (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nim CHAR(3) NOT NULL,
-    id_dosen CHAR(2) NOT NULL,
-    FOREIGN KEY(nim) REFERENCES mahasiswa(nim),
-    FOREIGN KEY(id_dosen) REFERENCES dosen(id_dosen)
-);
-INSERT INTO membimbing (nim, id_dosen) VALUES
-("0005", "01"),
-("0002", "02"),
-("0001", "03"),
-("0003", "03"),
-("0004", "03");
-
-
-CREATE TABLE mengikuti (
+CREATE TABLE kontrak (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nim CHAR(4) NOT NULL,
+    id_dosen CHAR(2) NOT NULL,
     id_matakuliah CHAR(3) NOT NULL,
-    nilai VARCHAR(5) NOT NULL,
+    nilai VARCHAR(5) NULL,
     FOREIGN KEY(nim) REFERENCES mahasiswa(nim),
+    FOREIGN KEY(id_dosen) REFERENCES dosen(id_dosen),
     FOREIGN KEY(id_matakuliah) REFERENCES matakuliah(id_matakuliah)
 );
 INSERT INTO mengikuti (nim, id_matakuliah, nilai) VALUES
