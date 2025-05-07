@@ -136,12 +136,12 @@ function tableMahasiswa() { //MAHASISWA!
 
 function daftarMahasiswa() {
     const table = new Table({
-        head: ['NIM', 'NAMA_MAHASISWA', 'UMUR', 'ALAMAT', 'ID_JURUSAN', 'JURUSAN']
+        head: ['NIM', 'NAMA MAHASISWA', 'UMUR', 'ALAMAT', 'ID JURUSAN', 'JURUSAN']
         , colWidths: [10, 20, 20, 10, 20, 20]
     });
 
     db.all("select * from mahasiswa left join jurusan using(id_jurusan)", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.nim, data.nama_mahasiswa, data.tanggalLahir, data.alamat, data.id_jurusan, data.jurusan])
@@ -155,7 +155,7 @@ function daftarMahasiswa() {
 function cariMahasiswa() {
     rl.question('Masukan NIM Mahasiswa : ', answer => {
         db.get("select * from mahasiswa where nim = ?", [answer], (err, data) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             if (!data) {
                 console.log(`Mahasiswa dengan NIM ${answer}, tidak terdaftar`);
@@ -177,12 +177,12 @@ Id Jurusan : ${data.id_jurusan}\n`);
 function tambahMahasiswa() {
     console.log('Lengkapi data di bawah ini :');
     const table = new Table({
-        head: ['NIM', 'NAMA_MAHASISWA', 'UMUR', 'ALAMAT', 'ID_JURUSAN', 'JURUSAN']
+        head: ['NIM', 'NAMA MAHASISWA', 'UMUR', 'ALAMAT', 'ID JURUSAN', 'JURUSAN']
         , colWidths: [10, 20, 20, 10, 20, 20]
     });
 
     db.all("select * from mahasiswa left join jurusan using(id_jurusan)", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.nim, data.nama_mahasiswa, data.tanggalLahir, data.alamat, data.id_jurusan, data.jurusan])
@@ -199,21 +199,21 @@ function tambah() {
                 rl.question('Alamat : ', alamat => {
 
                     const table = new Table({
-                        head: ['ID_JURUSAN', 'JURUSAN']
+                        head: ['ID JURUSAN', 'JURUSAN']
                         , colWidths: [20, 20]
                     });
 
                     db.all("select * from jurusan", (err, data) => {
-                        if (err) return console.log("please contact administrator", err);
+                        if (err) return console.log("Please contact administrator", err);
 
                         data.forEach(data => {
                             table.push([data.id_jurusan, data.jurusan]);
                         });
                         console.log(table.toString());
-                        rl.question('id jurusan : ', idJurusan => {
+                        rl.question('Id Jurusan : ', idJurusan => {
                             db.run("insert into mahasiswa values (?, ?, ?, ?, ?)", [nim, idJurusan, nama, tanggalLahir, alamat], (err) => {
-                                if (err) return console.log("please contact administrator", err);
-                                console.log('mahasiswa telah ditambahkan')
+                                if (err) return console.log("Please contact administrator", err);
+                                console.log('Mahasiswa telah ditambahkan')
                                 daftarMahasiswa();
                             });
                         });
@@ -227,7 +227,7 @@ function tambah() {
 function hapusMahasiswa() {
     rl.question('Masukan NIM mahasiswa : ', answer => {
         db.run("delete from mahasiswa where nim = ?", [answer], (err) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             console.log(`Data Mahasiswa dengan NIM ${answer}, telah dihapus`);
             line();
@@ -278,12 +278,12 @@ function tableJurusan() { //JURUSAN!
 
 function daftarJurusan() {
     const table = new Table({
-        head: ['ID_JURUSAN', 'JURUSAN']
+        head: ['ID JURUSAN', 'JURUSAN']
         , colWidths: [20, 20]
     });
 
     db.all("select * from jurusan", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.id_jurusan, data.jurusan]);
@@ -297,7 +297,7 @@ function daftarJurusan() {
 function cariJurusan() {
     rl.question('Masukan Id Jurusan : ', answer => {
         db.get("select * from jurusan where id_jurusan = ?", [answer], (err, data) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             if (!data) {
                 console.log(`Jurusan dengan Id jurusan ${answer}, tidak terdaftar`);
@@ -316,21 +316,21 @@ Jurusan    : ${data.jurusan}\n`);
 
 function tambahJurusan() {
     const table = new Table({
-        head: ['ID_JURUSAN', 'JURUSAN']
+        head: ['ID JURUSAN', 'JURUSAN']
         , colWidths: [20, 20]
     });
 
     db.all("select * from jurusan", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.id_jurusan, data.jurusan]);
         });
         console.log(table.toString());
-        rl.question('id jurusan : ', idJurusan => {
-            rl.question('jurusan : ', jurusan => {
+        rl.question('Id Jurusan : ', idJurusan => {
+            rl.question('Jurusan : ', jurusan => {
                 db.run("insert into jurusan values (?, ?)", [idJurusan, jurusan], (err) => {
-                    if (err) return console.log("please contact administrator", err);
+                    if (err) return console.log("Please contact administrator", err);
                     console.log('Jurusan telah ditambahkan ke database')
                     line();
                     tableJurusan();
@@ -343,7 +343,7 @@ function tambahJurusan() {
 function hapusJurusan() {
     rl.question('Masukan Id Jurusan : ', answer => {
         db.run("delete from jurusan where id_jurusan = ?", [answer], (err) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             console.log(`Data Jurusan ${answer}, telah dihapus`);
             line();
@@ -394,12 +394,12 @@ function tableDosen() { //DOSEN!
 
 function daftarDosen() {
     const table = new Table({
-        head: ['ID_DOSEN', 'NAMA_DOSEN']
+        head: ['ID DOSEN', 'NAMA DOSEN']
         , colWidths: [20, 20]
     });
 
     db.all("select * from dosen", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.id_dosen, data.nama_dosen]);
@@ -413,7 +413,7 @@ function daftarDosen() {
 function cariDosen() {
     rl.question('Masukan Id Dosen : ', answer => {
         db.get("select * from dosen where id_dosen = ?", [answer], (err, data) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             if (!data) {
                 console.log(`Dosen dengan Id Dosen ${answer}, tidak terdaftar`);
@@ -432,21 +432,21 @@ Nama Dosen : ${data.nama_dosen}\n`);
 
 function tambahDosen() {
     const table = new Table({
-        head: ['ID_DOSEN', 'NAMA_DOSEN']
+        head: ['ID DOSEN', 'NAMA DOSEN']
         , colWidths: [20, 20]
     });
 
     db.all("select * from dosen", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.id_dosen, data.nama_dosen]);
         });
         console.log(table.toString());
-        rl.question('id dosen : ', idDosen => {
-            rl.question('nama dosen : ', namaDosen => {
+        rl.question('Id Dosen : ', idDosen => {
+            rl.question('Nama Dosen : ', namaDosen => {
                 db.run("insert into dosen values (?, ?)", [idDosen, namaDosen], (err) => {
-                    if (err) return console.log("please contact administrator", err);
+                    if (err) return console.log("Please contact administrator", err);
                     console.log('Dosen telah ditambahkan ke database');
                     line();
                     tableDosen();
@@ -459,7 +459,7 @@ function tambahDosen() {
 function hapusDosen() {
     rl.question('Masukan Id Dosen : ', answer => {
         db.run("delete from dosen where id_dosen = ?", [answer], (err) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             console.log(`Data Dosen ${answer}, telah dihapus`);
             line();
@@ -467,6 +467,7 @@ function hapusDosen() {
         });
     });
 };
+
 
 
 
@@ -509,12 +510,12 @@ function tableMataKuliah() { //MATAKULIAH!
 
 function daftarMataKuliah() {
     const table = new Table({
-        head: ['ID_MATAKULIAH', 'MATAKULIAH', 'SKS']
+        head: ['ID MATAKULIAH', 'MATAKULIAH', 'SKS']
         , colWidths: [20, 40, 10]
     });
 
     db.all("select * from matakuliah", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.id_matakuliah, data.matakuliah, data.sks]);
@@ -529,7 +530,7 @@ function daftarMataKuliah() {
 function cariMataKuliah() {
     rl.question('Masukan Id Mata Kuliah : ', answer => {
         db.get("select * from matakuliah where id_matakuliah = ?", [answer], (err, data) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             if (!data) {
                 console.log(`Mata Kuliah dengan Id Mata kuliah ${answer}, tidak terdaftar`);
@@ -549,12 +550,12 @@ SKS            : ${data.sks}\n`);
 
 function tambahMataKuliah() {
     const table = new Table({
-        head: ['ID_MATAKULIAH', 'MATAKULIAH', 'SKS']
+        head: ['ID MATAKULIAH', 'MATAKULIAH', 'SKS']
         , colWidths: [20, 40, 10]
     });
 
     db.all("select * from matakuliah", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.id_matakuliah, data.matakuliah, data.sks]);
@@ -564,7 +565,7 @@ function tambahMataKuliah() {
             rl.question('Matakuliah : ', matakuliah => {
                 rl.question('SKS : ', sks => {
                     db.run("insert into matakuliah values (?, ?, ?)", [idMatakuliah, matakuliah, sks], (err) => {
-                        if (err) return console.log("please contact administrator", err);
+                        if (err) return console.log("Please contact administrator", err);
                         console.log('Matakuliah telah ditambahkan ke database')
                         line();
                         tableMataKuliah();
@@ -578,7 +579,7 @@ function tambahMataKuliah() {
 function hapusMataKuliah() {
     rl.question('Masukan Id Mata Kuliah : ', answer => {
         db.run("delete from matakuliah where id_matakuliah = ?", [answer], (err) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             console.log(`Data Mata kuliah ${answer}, telah dihapus`);
             line();
@@ -633,7 +634,7 @@ function tableKontrak() { //KONTRAK!
 
 function daftarKontrak() {
     const table = new Table({
-        head: ['ID', 'NIM', 'NAMA_MAHASISWA', 'MATAKULIAH', 'NAMA_DOSEN', 'NILAI']
+        head: ['ID', 'NIM', 'NAMA MAHASISWA', 'MATAKULIAH', 'NAMA DOSEN', 'NILAI']
         , colWidths: [10, 10, 20, 40, 20, 10]
     });
 
@@ -655,10 +656,10 @@ function cariKontrak() {
     mahasiswa(function daftarMahasiswa() {
         rl.question('Masukan NIM Mahasiswa : ', answer => {
             db.all("select * from kontrak where nim = ?", [answer], (err, data) => {
-                if (err) return console.log("please contact administrator", err);
+                if (err) return console.log("Please contact administrator", err);
 
                 const table = new Table({
-                    head: ['ID', 'NIM', 'ID_MATAKULIAH', 'ID_DOSEN', 'NILAI']
+                    head: ['ID', 'NIM', 'ID MATAKULIAH', 'ID DOSEN', 'NILAI']
                     , colWidths: [10, 10, 20, 10, 10]
                 });
 
@@ -676,7 +677,7 @@ function cariKontrak() {
 
 function mahasiswa(callback) {
     db.all("select * from mahasiswa join jurusan using(id_jurusan)", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         const table = new Table({
             head: ['NIM', 'NAMA MAHASISWA', 'TANGGAL LAHIR', 'ALAMAT', 'ID JURUSAN', 'JURUSAN']
@@ -696,8 +697,8 @@ function tambahKontrak() {
         kontrakMatakuliah(function (idMatakuliah) {
             kontrakDosen(function (idDosen) {
                 db.run("insert into kontrak (nim, id_matakuliah, id_dosen) values (?, ?, ?)", [nim, idMatakuliah, idDosen], (err) => {
-                    if (err) return console.log("please contact administrator", err);
-                    console.log('kontrak telah ditambahkan');
+                    if (err) return console.log("Please contact administrator", err);
+                    console.log('Kontrak telah ditambahkan');
                     line();
                     tableKontrak();
                 });
@@ -709,12 +710,12 @@ function tambahKontrak() {
 function kontrakMahasiswa(answer) {
     console.log('Lengkapi data di bawah ini :');
     const table = new Table({
-        head: ['NIM', 'NAMA_MAHASISWA', 'UMUR', 'ALAMAT', 'ID_JURUSAN', 'JURUSAN']
+        head: ['NIM', 'NAMA MAHASISWA', 'UMUR', 'ALAMAT', 'ID JURUSAN', 'JURUSAN']
         , colWidths: [10, 20, 20, 10, 20, 20]
     });
 
     db.all("select * from mahasiswa left join jurusan using(id_jurusan)", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.nim, data.nama_mahasiswa, data.tanggalLahir, data.alamat, data.id_jurusan, data.jurusan])
@@ -728,10 +729,10 @@ function kontrakMahasiswa(answer) {
 
 function kontrakMatakuliah(answer) {
     db.all("select * from matakuliah", (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         const table = new Table({
-            head: ['ID_MATAKULIAH', 'MATAKULIAH', 'SKS']
+            head: ['ID MATAKULIAH', 'MATAKULIAH', 'SKS']
             , colWidths: [20, 40, 10]
         });
 
@@ -743,14 +744,14 @@ function kontrakMatakuliah(answer) {
             answer(idMatakuliah);
         });
     });
-}
+};
 
 function kontrakDosen(answer) {
     db.all("select * from dosen", (err, data) => {
         if (err) return console.log("please contact administrator", err);
 
         const table = new Table({
-            head: ['ID_DOSEN', 'NAMA_DOSEN']
+            head: ['ID DOSEN', 'NAMA DOSEN']
             , colWidths: [20, 20]
         });
 
@@ -762,12 +763,12 @@ function kontrakDosen(answer) {
             answer(idDosen);
         });
     });
-}
+};
 
 function hapusKontrak() {
     rl.question('Masukan Id kontrak : ', answer => {
         db.run("delete from kontrak where id = ?", [answer], (err) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             console.log(`Data Kontrak ${answer}, telah dihapus`);
             line();
@@ -779,7 +780,7 @@ function hapusKontrak() {
 function updateNilaiKontrak() {
     updateNilai(function (nim) {
         db.all("select id, matakuliah, nilai from kontrak join matakuliah using(id_matakuliah) where nim = ?", [nim], (err, data) => {
-            if (err) return console.log("please contact administrator", err);
+            if (err) return console.log("Please contact administrator", err);
 
             const table = new Table({
                 head: ['ID', 'MATAKULIAH', 'NILAI']
@@ -797,16 +798,16 @@ function updateNilaiKontrak() {
                 rl.question('Tulis nilai yang baru : ', nilai => {
                     line();
                     db.run("update kontrak set nilai = (?) where id = (?)", [nilai.toUpperCase(), id], (err) => {
-                        if (err) return console.log("please contact administrator", err);
+                        if (err) return console.log("Please contact administrator", err);
                         console.log('Nilai Telah Diupdate');
                         const table = new Table({
-                            head: ['ID', 'NIM', 'NAMA_MAHASISWA', 'MATAKULIAH', 'NAMA_DOSEN', 'NILAI']
+                            head: ['ID', 'NIM', 'NAMA MAHASISWA', 'MATAKULIAH', 'NAMA DOSEN', 'NILAI']
                             , colWidths: [10, 10, 20, 40, 20, 10]
                         });
 
                         db.all(`select id, nim, nama_mahasiswa, matakuliah, nama_dosen, nilai 
                             from kontrak join mahasiswa using(nim) join matakuliah using(id_matakuliah) join dosen using(id_dosen);`, (err, data) => {
-                            if (err) return console.log("please contact administrator", err);
+                            if (err) return console.log("Please contact administrator", err);
 
                             data.forEach(data => {
                                 table.push([data.id, data.nim, data.nama_mahasiswa, data.matakuliah, data.nama_dosen, data.nilai ? data.nilai : '']);
@@ -825,13 +826,13 @@ function updateNilaiKontrak() {
 
 function updateNilai(answer) {
     const table = new Table({
-        head: ['ID', 'NIM', 'NAMA_MAHASISWA', 'MATAKULIAH', 'NAMA_DOSEN', 'NILAI']
+        head: ['ID', 'NIM', 'NAMA MAHASISWA', 'MATAKULIAH', 'NAMA DOSEN', 'NILAI']
         , colWidths: [10, 10, 20, 40, 20, 10]
     });
 
     db.all(`select id, nim, nama_mahasiswa, matakuliah, nama_dosen, nilai 
         from kontrak join mahasiswa using(nim) join matakuliah using(id_matakuliah) join dosen using(id_dosen);`, (err, data) => {
-        if (err) return console.log("please contact administrator", err);
+        if (err) return console.log("Please contact administrator", err);
 
         data.forEach(data => {
             table.push([data.id, data.nim, data.nama_mahasiswa, data.matakuliah, data.nama_dosen, data.nilai ? data.nilai : '']);
